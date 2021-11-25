@@ -99,10 +99,12 @@ void outputTiket() {
 }
 
 int main() {
+
   mainMenu();
   selectMenu();
   logicApp();
   outputTiket();
 
   return 0;
+
 }
