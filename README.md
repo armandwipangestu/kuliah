@@ -2,7 +2,7 @@
 
 - Struktur File
 
-`
+```bash
  .
 ├──  Algoritma
 │  └──  Semester 1 (Ganjil)
@@ -32,4 +32,4 @@
 │                 ├──  tiket pesawat.pdf
 │                 └──  tiket pesawat.pptx
 └──  README.md
-`
+```
