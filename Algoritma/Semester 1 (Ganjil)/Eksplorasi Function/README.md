@@ -1,8 +1,6 @@
 ### Video Penjelasan Code
 
-- C++ - Apa itu Function?
-<br>
-  [https://youtu.be/SwaQZBFgDJE](https://youtu.be/SwaQZBFgDJE)
+- <a href="https://youtu.be/SwaQZBFgDJE" target="_blank">C++ - Apa itu Function?</a>
 
 - C++ - Praktek Membuat Function
 <br>
