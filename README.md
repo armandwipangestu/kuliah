@@ -1,4 +1,4 @@
-#### Repository ini digunakan untuk menyimpan source code dari tugas kuliah
+## Repository ini digunakan untuk menyimpan source code dari tugas kuliah
 
 - Struktur File
 
