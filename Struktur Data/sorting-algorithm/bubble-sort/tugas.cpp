@@ -78,56 +78,10 @@ void main_menu() {
   cout << "7. Keluar dari Program\n" << endl;
 }
 
-void switchCase(int pilih_menu) {
-
-  switch(pilih_menu) {
-    case 1:
-      setDataRandom(data_random, data_random_length);
-      data_bubble_length = sizeof(data_bubble)/sizeof(data_bubble[0]);
-      switchCase(pilih_menu);
-
-    case 2:
-      startBubbleSort(data_bubble, data_bubble_length);
-      switchCase(pilih_menu);
-
-    case 5:
-      cout << COLOR_RED << "Data Sebelum Di Sorting" << COLOR_RESET << endl;
-      getDataRandom(data_random, data_random_length);
-
-      cout << COLOR_GREEN << "Data Setelah Di Sorting" << COLOR_RESET << endl;
-      getDataRandom(data_bubble, data_bubble_length);
-      switchCase(pilih_menu);
-
-    case 6:
-
-      break;
-
-    case 7:
-
-      break;
-  }
-
 }
 
 int main() {
 
-  //setDataRandom(data_random, data_random_length);
-  //int data_bubble_length = sizeof(data_bubble)/sizeof(data_bubble[0]);
-  //getDataRandom(data_random, data_random_length);
-
-  //cout << "\n\n";
-
-  //checkData(data_random, data_bubble, data_random_length);
-  //cout << "\n\n";
-
-  //startBubbleSort(data_bubble, data_bubble_length);
-  //getDataRandom(data_bubble, data_bubble_length);
-
-  //main_menu();
-  //cout << "Masukan Pilihan Anda: ";
-  //cin >> pilih_menu;
-
-  //switchCase(data_random, data_random_length, pilih_menu);
   while ( true ) {
     main_menu();
     cout << "Masukan Pilihan Anda: ";
