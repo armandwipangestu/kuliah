@@ -32,6 +32,8 @@ int data_random[10000],
     data_bubble_length,
     pilih_menu;
 
+auto waktu_mulai, waktu_berhenti, waktu;
+
 void setDataRandom(int data_random[], int data_random_length) {
   for( int i = 0; i < data_random_length; i++ ) {
     data_random[i] = (rand() % 100) + 1;
@@ -69,22 +71,26 @@ void checkData(int data_random[], int data_bubble[], int data_length) {
   }
 }
 
-void main_menu() {
-  cout << "Menu Program:" << endl;
-  cout << "1. Penyiapan Data Random (1.000 data)" << endl;
-  cout << "2. Lakukan Sort dengan Bubble Sort" << endl;
-  cout << "5. Tampilkan Hasil Sorting" << endl;
-  cout << "6. Tampilkan hasil tabel perbandingan" << endl;
-  cout << "7. Keluar dari Program\n" << endl;
+void totalWaktuSorting(int waktu) {
+  cout << "[" << COLOR_YELLOW << "INFO" << COLOR_RESET << "] > Total Waktu Sorting " << COLOR_YELLOW << "'" << waktu << "' microseconds." << endl;
 }
 
+void main_menu() {
+  cout << "[" << COLOR_YELLOW << "Menu Program" << COLOR_RESET "]" << endl;
+  cout << COLOR_CYAN << "─────────────" << COLOR_RESET << endl;
+  cout << "[" << COLOR_YELLOW << "1" << COLOR_RESET << "] Penyiapan Data Random (1.000 data)" << endl;
+  cout << "[" << COLOR_YELLOW << "2" << COLOR_RESET << "] Lakukan Sort dengan Bubble Sort" << endl;
+  cout << "[" << COLOR_YELLOW << "5" << COLOR_RESET << "] Tampilkan Hasil Sorting" << endl;
+  cout << "[" << COLOR_YELLOW << "6" << COLOR_RESET << "] Tampilkan Total Waktu Sorting" << endl;
+  cout << "[" << COLOR_YELLOW << "7" << COLOR_RESET << "] Tampilkan hasil tabel perbandingan" << endl;
+  cout << "[" << COLOR_YELLOW << "8" << COLOR_RESET << "] Keluar dari Program\n" << endl;
 }
 
 int main() {
 
   while ( true ) {
     main_menu();
-    cout << "Masukan Pilihan Anda: ";
+    cout << "[" COLOR_YELLOW << "Pilih Menu" << COLOR_RESET << "] > ";
     cin >> pilih_menu;
 
     switch(pilih_menu) {
@@ -92,31 +98,50 @@ int main() {
         setDataRandom(data_random, data_random_length);
         data_bubble_length = sizeof(data_bubble)/sizeof(data_bubble[0]);
         cout << "\n";
+        if( data_bubble[0] == data_random[0] ) {
+          cout << "[" << COLOR_YELLOW << "INFO" << COLOR_RESET << "] > Data Berhasil di-generate." << endl;
+        }
+        cout << "\n";
         break;
 
       case 2:
+        extern waktu_mulai = high_resolution_clock::now();
         startBubbleSort(data_bubble, data_bubble_length);
+        extern waktu_berhenti = high_resolution_clock::now();
+        extern waktu = duration_cast<microseconds>(waktu_berhenti - waktu_mulai);
         cout << "\n";
         break;
 
       case 5:
-        cout << "\n";
-        cout << COLOR_RED << "Data Sebelum Di Sorting" << COLOR_RESET << endl;
-        getDataRandom(data_random, data_random_length);
-        cout << "\n\n";
+        if( data_random[0] != '\0' ) {
+          cout << "\n";
+          cout << "[" COLOR_RED << "INFO" << COLOR_RESET << "] > Data Sebelum Di Sorting" << endl;
+          getDataRandom(data_random, data_random_length);
+          cout << "\n\n";
 
-        cout << COLOR_GREEN << "Data Setelah Di Sorting" << COLOR_RESET << endl;
-        getDataRandom(data_bubble, data_bubble_length);
-        cout << "\n\n";
-        break;
+          cout << "[" COLOR_GREEN << "INFO" << COLOR_RESET << "] > Data Setelah Di Sorting" << endl;
+          getDataRandom(data_bubble, data_bubble_length);
+          cout << "\n\n";
+          break;
+        } else {
+          cout << "\n";
+          cout << "[" COLOR_RED << "INFO" << COLOR_RESET << "] > Data Belum Di Siapkan" << endl;
+          cout << "\n\n";
+          break;
+        }
 
       case 6:
-
+        totalWaktuSorting(waktu);
         break;
 
       case 7:
 
         break;
+
+      case 8:
+
+        break;
+
     }
   }
 
