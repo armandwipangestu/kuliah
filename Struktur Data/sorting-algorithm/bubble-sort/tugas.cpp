@@ -33,9 +33,11 @@ int data_random[1000],
     data_bubble_length,
     pilih_menu;
 
+int time_bubble_sort;
+
 void setDataRandom(int data_random[], int data_random_length) {
   for( int i = 0; i < data_random_length; i++ ) {
-    data_random[i] = (rand() % 100) + 1;
+    data_random[i] = (rand() % 1000) + 1;
     data_bubble[i] = data_random[i];
   }
 }
@@ -53,6 +55,7 @@ void swapPointer( int *x_position, int *y_position ) {
 }
 
 void startBubbleSort(int data_bubble[], int data_bubble_length) {
+  auto start = high_resolution_clock::now();
   for( int i = 0; i < data_bubble_length; i++ ) {
     for( int j = 0; j < data_bubble_length - i - 1; j++ ) {
       if( data_bubble[j] > data_bubble[j + 1] ) {
@@ -60,24 +63,29 @@ void startBubbleSort(int data_bubble[], int data_bubble_length) {
       }
     }
   }
+  auto stop = high_resolution_clock::now();
+  auto duration = duration_cast<microseconds>(stop - start);
+  time_bubble_sort = duration.count();
 }
 
-void tampilkanTabelPerbandingan(int data_random[], int data_bubble[]) {
-  cout << "\n[" << COLOR_YELLOW << "Tabel Perbandingan" << COLOR_RESET "]" << endl;
+void tampilkanTabelPerbandingan(int data_random[], int data_bubble[], string sorting_name) {
+  cout << "\n[" << COLOR_YELLOW << "Tabel Perbandingan Berdasarkan 10 Index Array Pertama" << COLOR_RESET "]" << endl;
   cout << COLOR_CYAN << "────────────────────\n" << COLOR_RESET << endl;
-  cout << "Data Sebelum Di Soring:" << endl;
-  cout << "┌──────────────────────────────────────────────────────────────────────────────┐" << endl;
+  cout << "Algoritma yang digunakan: " << COLOR_YELLOW << sorting_name << COLOR_RESET;
+  cout << "\n\n";
+  cout << "Data Sebelum Di Sorting:" << endl;
+  cout << "┌────────────────────────────────────────────────────────────────────────────────────────┐" << endl;
   for( int i = 0; i < 10; i++ ) {
-    cout << "│  " << setw(2) << data_random[i] << "  │";
+    cout << "│  " << setw(3) << data_random[i] << "  │";
   }
-  cout << "\n└──────────────────────────────────────────────────────────────────────────────┘\n";
+  cout << "\n└────────────────────────────────────────────────────────────────────────────────────────┘\n";
 
-  cout << "\nData Setelah Di Soring:" << endl;
-  cout << "┌──────────────────────────────────────────────────────────────────────────────┐" << endl;
+  cout << "\nData Setelah Di Sorting:" << endl;
+  cout << "┌────────────────────────────────────────────────────────────────────────────────────────┐" << endl;
   for( int i = 0; i < 10; i++ ) {
-    cout << "│  " << setw(2) << data_bubble[i] << "  │";
+    cout << "│  " << setw(3) << data_bubble[i] << "  │";
   }
-  cout << "\n└──────────────────────────────────────────────────────────────────────────────┘\n\n";
+  cout << "\n└────────────────────────────────────────────────────────────────────────────────────────┘\n\n";
 }
 
 void checkData(int data_random[], int data_bubble[], int data_length) {
@@ -118,10 +126,7 @@ int main() {
         break;
 
       case 2:
-//        auto waktu_mulai = high_resolution_clock::now();
         startBubbleSort(data_bubble, data_bubble_length);
-//        auto waktu_berhenti = high_resolution_clock::now();
-//        auto waktu = duration_cast<microseconds>(waktu_berhenti - waktu_mulai);
         cout << "\n";
         break;
 
@@ -144,12 +149,21 @@ int main() {
         }
 
       case 6:
-//        cout << "[" << COLOR_YELLOW << "INFO" << COLOR_RESET << "] > Total Waktu Sorting " << COLOR_YELLOW << "'" << waktu.count() << "' microseconds." << endl;
-        break;
+        if ( time_bubble_sort != '\0' ) {
+          cout << "\n";
+          cout << "[" << COLOR_GREEN << "INFO" << COLOR_RESET << "] > Total Waktu Sorting " << COLOR_YELLOW << "'" << time_bubble_sort << COLOR_RESET << "' microseconds." << endl;
+          cout << "\n";
+          break;
+        } else {
+          cout << "\n";
+          cout << "[" COLOR_RED << "INFO" << COLOR_RESET << "] > Sorting Belum Dilakukan." << endl;
+          cout << "\n";
+          break;
+        }
 
       case 7:
         if ( data_random[0] != '\0' && data_bubble[0] != '\0' ) {
-          tampilkanTabelPerbandingan(data_random, data_bubble);
+          tampilkanTabelPerbandingan(data_random, data_bubble, "Bubble Sort");
           break;
         } else if ( data_random[0] == '\0' && data_bubble[0] == '\0' ) {
           cout << "\n";
