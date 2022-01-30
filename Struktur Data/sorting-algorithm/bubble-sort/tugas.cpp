@@ -27,22 +27,24 @@ void colorName() {
 
 }
 
-int total_data = 10000
-    data_random[total_data], 
+int data_random[1000], 
     data_random_length = sizeof(data_random)/sizeof(data_random[0]),
-    data_bubble[total_data],
+    data_bubble[1000],
     data_bubble_length,
-    data_selection[total_data],
+    data_selection[1000],
     data_selection_length,
+    data_insertion[1000],
+    data_insertion_length,
     pilih_menu;
 
-int time_bubble_sort, time_selection_sort;
+int time_bubble_sort, time_selection_sort, time_insertion_sort;
 
 void setDataRandom(int data_random[], int data_random_length) {
   for( int i = 0; i < data_random_length; i++ ) {
     data_random[i] = (rand() % 1000) + 1;
     data_bubble[i] = data_random[i];
     data_selection[i] = data_random[i];
+    data_insertion[i] = data_random[i];
   }
 }
 
@@ -90,6 +92,23 @@ void startSelectionSort(int data_selection[], int data_selection_length) {
   time_selection_sort = duration.count();
 }
 
+void startInsertionSort(int data_insertion[], int data_insertion_length) {
+  auto start = high_resolution_clock::now();
+  for(int i = 1; i < data_insertion_length; i++) {
+    int key = data_insertion[i];
+    int j = i - 1;
+
+    while(j >= 0 && data_insertion[j] > key) {
+      data_insertion[j + 1] = data_insertion[j];
+      j = j - 1;
+    }
+    data_insertion[j + 1] = key;
+  }
+  auto stop = high_resolution_clock::now();
+  auto duration = duration_cast<microseconds>(stop - start);
+  time_insertion_sort = duration.count();
+}
+
 void tampilkanTabelPerbandingan(int data_random[], int data_bubble[], string sorting_name) {
   cout << "\n[" << COLOR_YELLOW << "Tabel Perbandingan Berdasarkan 10 Index Array Pertama" << COLOR_RESET "]" << endl;
   cout << COLOR_CYAN << "───────────────────────────────────────────────────────\n" << COLOR_RESET << endl;
@@ -129,6 +148,7 @@ void main_menu() {
   cout << "[" << COLOR_YELLOW << "1" << COLOR_RESET << "] Penyiapan Data Random (1.000 data)" << endl;
   cout << "[" << COLOR_YELLOW << "2" << COLOR_RESET << "] Lakukan Sort dengan Bubble Sort" << endl;
   cout << "[" << COLOR_YELLOW << "3" << COLOR_RESET << "] Lakukan Sort dengan Selection Sort" << endl;
+  cout << "[" << COLOR_YELLOW << "4" << COLOR_RESET << "] Lakukan Sort dengan Insertion Sort" << endl;
   cout << "[" << COLOR_YELLOW << "5" << COLOR_RESET << "] Tampilkan Hasil Sorting" << endl;
   cout << "[" << COLOR_YELLOW << "6" << COLOR_RESET << "] Tampilkan Total Waktu Sorting" << endl;
   cout << "[" << COLOR_YELLOW << "7" << COLOR_RESET << "] Tampilkan hasil tabel perbandingan" << endl;
@@ -147,6 +167,7 @@ int main() {
         setDataRandom(data_random, data_random_length);
         data_bubble_length = sizeof(data_bubble)/sizeof(data_bubble[0]);
         data_selection_length = sizeof(data_selection)/sizeof(data_selection[0]);
+        data_insertion_length = sizeof(data_insertion)/sizeof(data_insertion[0]);
         cout << "\n";
         if( data_bubble[0] == data_random[0] ) {
           cout << "[" << COLOR_GREEN << "INFO" << COLOR_RESET << "] > Data Berhasil di-generate." << endl;
@@ -161,6 +182,11 @@ int main() {
 
       case 3:
         startSelectionSort(data_selection, data_selection_length);
+        cout << "\n";
+        break;
+
+      case 4:
+        startInsertionSort(data_insertion, data_insertion_length);
         cout << "\n";
         break;
 
@@ -179,6 +205,10 @@ int main() {
           getDataRandom(data_selection, data_selection_length, "Data Selection Sort");
           cout << "\n\n";
 
+          cout << "[" COLOR_GREEN << "INFO" << COLOR_RESET << "] > Data Setelah Di Sorting" << endl;
+          getDataRandom(data_insertion, data_insertion_length, "Data Insertion Sort");
+          cout << "\n\n";
+
           break;
         } else {
           cout << "\n";
@@ -188,10 +218,11 @@ int main() {
         }
 
       case 6:
-        if ( time_bubble_sort != '\0' && time_selection_sort != '\0' ) {
+        if ( time_bubble_sort != '\0' && time_selection_sort != '\0' && time_insertion_sort != '\0' ) {
           getTotalWaktuSorting(time_bubble_sort, "Bubble Sort");
           getTotalWaktuSorting(time_selection_sort, "Selection Sort");
-          cout << "\n";
+          getTotalWaktuSorting(time_insertion_sort, "Insertion Sort");
+          cout << "\n\n";
           break;
         } else {
           cout << "\n";
@@ -201,11 +232,12 @@ int main() {
         }
 
       case 7:
-        if ( data_random[0] != '\0' && data_bubble[0] != '\0' ) {
+        if ( data_random[0] != '\0' && data_bubble[0] != '\0' && data_insertion[0] != '\0' ) {
           tampilkanTabelPerbandingan(data_random, data_bubble, "Bubble Sort");
           tampilkanTabelPerbandingan(data_random, data_selection, "Selection Sort");
+          tampilkanTabelPerbandingan(data_random, data_insertion, "Insertion Sort");
           break;
-        } else if ( data_random[0] == '\0' && data_bubble[0] == '\0' ) {
+        } else if ( data_random[0] == '\0' && data_bubble[0] == '\0' && data_insertion[0] == '\0' ) {
           cout << "\n";
           cout << "[" COLOR_RED << "INFO" << COLOR_RESET << "] > Data Belum Di Siapkan" << endl;
           cout << "\n";
