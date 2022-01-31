@@ -117,14 +117,14 @@ void tampilkanTabelPerbandingan(int data_random[], int data_bubble[], string sor
   cout << "Data Sebelum Di Sorting:" << endl;
   cout << "┌────────────────────────────────────────────────────────────────────────────────────────┐" << endl;
   for( int i = 0; i < 10; i++ ) {
-    cout << "│  " << setw(3) << data_random[i] << "  │";
+    cout << "│  " << setw(3) << COLOR_RED << data_random[i] << COLOR_RESET << "  │";
   }
   cout << "\n└────────────────────────────────────────────────────────────────────────────────────────┘\n";
 
   cout << "\nData Setelah Di Sorting:" << endl;
   cout << "┌────────────────────────────────────────────────────────────────────────────────────────┐" << endl;
   for( int i = 0; i < 10; i++ ) {
-    cout << "│  " << setw(3) << data_bubble[i] << "  │";
+    cout << "│  " << setw(3) << COLOR_GREEN << data_bubble[i] << COLOR_RESET << "  │";
   }
   cout << "\n└────────────────────────────────────────────────────────────────────────────────────────┘\n\n";
 }
@@ -139,12 +139,12 @@ void checkData(int data_random[], int data_bubble[], int data_length) {
 
 void getTotalWaktuSorting(int time_sort, string sorting_name) {
   cout << "\n";
-  cout << "[" << COLOR_GREEN << "INFO" << COLOR_RESET << "] > Total Waktu " << sorting_name << COLOR_YELLOW << " '" << time_sort << COLOR_RESET << "' microseconds.";
+  cout << "[" << COLOR_GREEN << "INFO" << COLOR_RESET << "] > Total Waktu " << COLOR_GREEN << sorting_name << COLOR_YELLOW << " '" << time_sort << COLOR_RESET << "' microseconds.";
 }
 
 void main_menu() {
   cout << "[" << COLOR_YELLOW << "Menu Program" << COLOR_RESET "]" << endl;
-  cout << COLOR_CYAN << "─────────────" << COLOR_RESET << endl;
+  cout << COLOR_CYAN << "──────────────" << COLOR_RESET << endl;
   cout << "[" << COLOR_YELLOW << "1" << COLOR_RESET << "] Penyiapan Data Random (1.000 data)" << endl;
   cout << "[" << COLOR_YELLOW << "2" << COLOR_RESET << "] Lakukan Sort dengan Bubble Sort" << endl;
   cout << "[" << COLOR_YELLOW << "3" << COLOR_RESET << "] Lakukan Sort dengan Selection Sort" << endl;
