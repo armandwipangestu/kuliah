@@ -117,14 +117,14 @@ void tampilkanTabelPerbandingan(int data_random[], int data_bubble[], string sor
   cout << "Data Sebelum Di Sorting:" << endl;
   cout << "┌────────────────────────────────────────────────────────────────────────────────────────┐" << endl;
   for( int i = 0; i < 10; i++ ) {
-    cout << "│  " << setw(3) << COLOR_RED << data_random[i] << COLOR_RESET << "  │";
+    cout << "│  " << COLOR_RED << setw(3) << data_random[i] << COLOR_RESET << "  │";
   }
   cout << "\n└────────────────────────────────────────────────────────────────────────────────────────┘\n";
 
   cout << "\nData Setelah Di Sorting:" << endl;
   cout << "┌────────────────────────────────────────────────────────────────────────────────────────┐" << endl;
   for( int i = 0; i < 10; i++ ) {
-    cout << "│  " << setw(3) << COLOR_GREEN << data_bubble[i] << COLOR_RESET << "  │";
+    cout << "│  " << COLOR_GREEN << setw(3) << data_bubble[i] << COLOR_RESET << "  │";
   }
   cout << "\n└────────────────────────────────────────────────────────────────────────────────────────┘\n\n";
 }
