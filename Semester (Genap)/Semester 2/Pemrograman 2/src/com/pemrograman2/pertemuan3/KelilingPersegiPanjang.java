@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class KelilingPersegiPanjang {
     public static void main(String[] args) {
-        int keliling_lingkaran, panjang, lebar;
+        int keliling_persegi_panjang, panjang, lebar;
 
         Scanner keyboard = new Scanner(System.in);
 
@@ -18,7 +18,7 @@ public class KelilingPersegiPanjang {
         System.out.print("Masukan Lebar Persegi: ");
         lebar = keyboard.nextInt();
 
-        keliling_lingkaran = 2 * (panjang + lebar);
-        System.out.print("Keliling Lingkaran: " + keliling_lingkaran);
+        keliling_persegi_panjang = 2 * (panjang + lebar);
+        System.out.print("Keliling Persegi Panjang: " + keliling_persegi_panjang);
     }
 }
