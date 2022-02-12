@@ -1,0 +1,10 @@
+### Identitas Mahasiswa ###
+Nama: Arman Dwi Pangestu
+Alamat: Jl. Jakarta, Gg. Laksana 8, No. 192, RT. 09, RW. 03, Kelurahan Kebonwaru, Kecamatan Batununggal, Kota Bandung
+Usia: 19
+IPK: 3.75
+====================
+Nama: Arman Dwi Pangestu
+Alamat: Jl. Jakarta, Gg. Laksana 8, No. 192, RT. 09, RW. 03, Kelurahan Kebonwaru, Kecamatan Batununggal, Kota Bandung
+Usia: 19
+IPK: 3.75
