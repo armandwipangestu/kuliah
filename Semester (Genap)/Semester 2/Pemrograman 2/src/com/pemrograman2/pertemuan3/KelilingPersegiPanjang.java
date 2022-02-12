@@ -12,10 +12,10 @@ public class KelilingPersegiPanjang {
         System.out.println("│  Program Keliling Persegi Panjang  │");
         System.out.println("└────────────────────────────────────┘\n");
 
-        System.out.print("Masukan Panjang: ");
+        System.out.print("Masukan Panjang Persegi: ");
         panjang = keyboard.nextInt();
 
-        System.out.print("Masukan Lebar: ");
+        System.out.print("Masukan Lebar Persegi: ");
         lebar = keyboard.nextInt();
 
         keliling_lingkaran = 2 * (panjang + lebar);
