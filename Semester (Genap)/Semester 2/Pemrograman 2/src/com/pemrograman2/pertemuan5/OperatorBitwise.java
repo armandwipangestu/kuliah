@@ -32,7 +32,6 @@ class OperatorBitwise {
     //
     //  Penjelasan:
     //  32 + 16 + 8 + 4 = 60
-
     int a = 60;
 
     // Disini value dari variable 'b' adalah 13, yang dimana dalam bit seperti ini:
@@ -48,11 +47,11 @@ class OperatorBitwise {
     // Disini value dari variable 'c' adalah hasil dari proses Operasi Bitwise,
     // pada kasus ini, operator yang digunakan adalah & atau AND. Seperti penjelasan
     // sebelumnya Operator & atau AND ini:
-    // > Bitwise OR (akan bernilai 1 jika kedua bit bernilai 1)
+    // > Bitwise AND (akan bernilai 1 jika kedua bit bernilai 1)
     //
     // bit 'a' = 0 0 1 1 1 1 0 0
     // bit 'b' = 0 0 0 0 1 1 0 1
-    //           ──────────────── &
+    //           ──────────────── & (AND)
     // bit 'c' = 0 0 0 0 1 1 0 0
     //
     // yang dimana dalam bit seperti ini:
@@ -69,5 +68,68 @@ class OperatorBitwise {
     c = a & b;
 
     System.out.println("a & b = " + c);
+
+    // > Bitwise OR (akan bernilai 1 jika salah satu bit bernilai 1)
+    //
+    // bit 'a' = 0 0 1 1 1 1 0 0
+    // bit 'b' = 0 0 0 0 1 1 0 1
+    //           ──────────────── | (OR)
+    // bit 'c' = 0 0 1 1 1 1 0 1
+    //
+    // yang dimana dalam bit seperti ini:
+    // ┌────────────────────────────────────────────────────┐
+    // │  128  │  64  │  32  │  16  │  8  │  4  │  2  │  1  │
+    // └────────────────────────────────────────────────────┘
+    //     0      0      1      1      1     1     0     1
+    //
+    // Penjelasan:
+    // 32 + 16 + 8 + 4 + 1 = 61
+    //
+    // > Value dari variable 'c' == 61
+    c = a | b;
+    
+    System.out.println("a | b = " + c);
+
+    // > Bitwise XOR (akan bernilai 1 jika salah satu bit bernilai 1, jika kedua bit benilai 1 maka akan me-return 0)
+    //
+    // bit 'a' = 0 0 1 1 1 1 0 0
+    // bit 'b' = 0 0 0 0 1 1 0 1
+    //           ──────────────── ^ (XOR)
+    // bit 'c' = 0 0 1 1 0 0 0 1
+    //
+    // yang dimana dalam bit seperti ini:
+    // ┌────────────────────────────────────────────────────┐
+    // │  128  │  64  │  32  │  16  │  8  │  4  │  2  │  1  │
+    // └────────────────────────────────────────────────────┘
+    //     0      0      1      1      0     0     0     1
+    //
+    // Penjelasan:
+    // 32 + 16 + 1 = 49
+    //
+    // > Value dari variable 'c' == 49
+    c = a ^ b;
+
+    System.out.println("a ^ b = " + c);
+
+    // > Bitwise NOT (bit bernilai 0 akan menjadi 1 dan bit bernilai 1 akan menjadi 0)
+    //
+    // bit 'a' = 0 0 1 1 1 1 0 0
+    //           ──────────────── ~ (NOT)
+    // bit 'c' = 1 1 0 0 0 0 1 1
+    //
+    // yang dimana dalam bit seperti ini:
+    // ┌────────────────────────────────────────────────────┐
+    // │  128  │  64  │  32  │  16  │  8  │  4  │  2  │  1  │
+    // └────────────────────────────────────────────────────┘
+    //     1      1      0      0      0     0     1     1
+    //
+    // Penjelasan:
+    // 128 - 64 - 2 - 1 = -61
+    //
+    // > Value dari variable 'c' == -61
+    c = ~a;
+
+    System.out.println("~a = " + c);
+
   }
 }
