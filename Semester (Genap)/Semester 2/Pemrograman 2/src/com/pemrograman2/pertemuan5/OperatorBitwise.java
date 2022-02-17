@@ -151,5 +151,26 @@ class OperatorBitwise {
 
     System.out.println("a << 2 = " + c);
 
+    // > Bitwise Shift Right (menggeser nilai bit ke kanan)
+    //
+    // bit 'a' = 0 0 1 1 1 1 0 0
+    //           ──────────────── >> 2 (Shift Right)
+    // bit 'c' = 0 0 0 0 1 1 1 1
+    //
+    // yang dimana dalam bit seperti ini:
+    // ┌────────────────────────────────────────────────────┐
+    // │  128  │  64  │  32  │  16  │  8  │  4  │  2  │  1  │
+    // └────────────────────────────────────────────────────┘
+    //     0      0      0      0      1     1     1     1
+    //
+    // Penjelasan:
+    // 8 + 4 + 2 + 1 = 15
+    //
+    // > Value dari variable 'c' == 15
+    c = a >> 2;
+
+    System.out.println("a >> 2 = " + c);
+
+
   }
 }
