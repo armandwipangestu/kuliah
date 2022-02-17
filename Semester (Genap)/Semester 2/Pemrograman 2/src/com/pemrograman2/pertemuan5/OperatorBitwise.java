@@ -131,5 +131,25 @@ class OperatorBitwise {
 
     System.out.println("~a = " + c);
 
+    // > Bitwise Shift Left (menggeser nilai bit ke kiri)
+    //
+    // bit 'a' = 0 0 1 1 1 1 0 0
+    //           ──────────────── << 2 (Shift Left)
+    // bit 'c' = 1 1 1 1 0 0 0 0
+    //
+    // yang dimana dalam bit seperti ini:
+    // ┌────────────────────────────────────────────────────┐
+    // │  128  │  64  │  32  │  16  │  8  │  4  │  2  │  1  │
+    // └────────────────────────────────────────────────────┘
+    //     1      1      1      1      0     0     0     0
+    //
+    // Penjelasan:
+    // 128 + 64 + 32 + 16 = 240
+    //
+    // > Value dari variable 'c' == 240
+    c = a << 2;
+
+    System.out.println("a << 2 = " + c);
+
   }
 }
